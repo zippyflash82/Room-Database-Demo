@@ -21,9 +21,12 @@ class MainActivity : AppCompatActivity() {
             UserDatabase::class.java, "user.db"
         ).build()
 
-
         btn_insert.setOnClickListener{
-          GlobalScope.launch {  val id =  db.userDao().addUser(User(0,"Muhammad " , "Shafique", 25))
+           var firstname= et_frist_name.text.toString()
+            var secondname = et_second_name.text.toString()
+            var age: Int = et_age.text.toString().toInt()
+
+          GlobalScope.launch {  val id =  db.userDao().addUser(User(0,firstname , secondname, age))
               println("Data insert Id: $id")
           }
         }
